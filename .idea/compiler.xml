@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="performance-service" />
+        <module name="hr-analytics-service" />
+        <module name="Api-Gateway" />
+        <module name="employee-service" />
+        <module name="security-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="infrastructureAsCode" target="23" />
+      <module name="InfrastructureAsCode" target="20" />
+      <module name="integration-tests" target="20" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Api-Gateway" options="-parameters" />
+      <module name="employee-service" options="-parameters" />
+      <module name="hr-analytics-service" options="-parameters" />
+      <module name="performance-service" options="-parameters" />
+      <module name="security-service" options="-parameters" />
+    </option>
+  </component>
+</project>

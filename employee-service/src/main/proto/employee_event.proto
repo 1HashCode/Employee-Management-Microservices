@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package employee.events;
+
+option java_multiple_files = true;
+
+message EmployeeEvent {
+    string employeeId = 1;
+    string name = 2;
+    string email = 3;
+    string designation = 4;
+    string department=5;
+    string event_type=6;
+}

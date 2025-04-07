@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package="performance";
+
+service PerformanceService {
+    rpc CreatePerformanceAccount(PerformanceRequest) returns (PerformanceResponse);
+    rpc DeletePerformanceAccount(PerformanceRequest) returns (PerformanceResponse);
+}
+
+message PerformanceRequest {
+    string employeeId = 1;
+    string name = 2;
+    string email = 3;
+    string designation = 4;
+}
+
+message PerformanceResponse {
+    string accountId = 1;
+    string status=2;
+}
+

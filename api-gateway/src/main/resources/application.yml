@@ -1,0 +1,51 @@
+server:
+    port: 4004
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: security-service-route
+          uri: http://security-service:4005
+          predicates:
+          - Path=/auth/**
+          filters:
+          - StripPrefix=1  # Remove the first path element from the request URI, e.g. /auth/login -> is forwarded to -> /login
+
+        - id: employee-service-route
+          uri: http://employee-service:4000
+          predicates:
+          - Path=/api/employees/**
+          filters:
+          - StripPrefix=1  # Remove the first path element from the request URI, e.g. /api/employee/1 -> is forwarded to -> employee/1
+          - JwtValidation # Custom filter for JWT validation
+
+        - id: performance-service-route
+          uri: http://performance-service:4001
+          predicates:
+            - Path=/api/performanceReviews/**
+          filters:
+            - StripPrefix=1  # Remove the first path element from the request URI, e.g. /api/performanceReviews/1 -> is forwarded to -> performanceReviews/1
+            - JwtValidation # Custom filter for JWT validation
+
+
+        - id: api-docs-employee-management-route
+          uri: http://employee-service:4000
+          predicates:
+          - Path=/api-docs/employees
+          filters:
+          - RewritePath=/api-docs/employees, /v3/api-docs
+
+        - id: api-docs-security-service-route
+          uri: http://security-service:4005
+          predicates:
+          - Path=/api-docs/security
+          filters:
+          - RewritePath=/api-docs/security, /v3/api-docs
+
+        - id: api-docs-performance-service-route
+          uri: http://performance-service:4001
+          predicates:
+          - Path=/api-docs/performance
+          filters:
+          - RewritePath=/api-docs/performance, /v3/api-docs

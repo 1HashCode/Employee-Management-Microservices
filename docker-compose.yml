@@ -1,0 +1,143 @@
+networks:
+  internal:
+    driver: bridge
+
+services:
+  employee-db:
+    image: postgres:latest
+    container_name: employee-service-db
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: admin_user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5000:5432"
+    volumes:
+      - employee_db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+
+  security-db:
+    image: postgres:latest
+    container_name: security-service-db
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: admin_user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5001:5432"
+    volumes:
+      - security_db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+
+  performance-db:
+    image: postgres:latest
+    container_name: performance-service-db
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: admin_user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5002:5432"
+    volumes:
+      - performance_db_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    environment:
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 0@kafka:9093
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      KAFKA_CFG_NODE_ID: 0
+      KAFKA_CFG_PROCESS_ROLES: controller,broker
+    networks:
+      - internal
+
+
+  employee-service:
+    build: ./employee-service
+    container_name: employee-service
+    depends_on:
+      - employee-db
+    environment:
+      PERFORMANCE_SERVICE_ADDRESS: performance-service
+      PERFORMANCE_SERVICE_GRPC_PORT: 9001
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://employee-service-db:5432/db
+      SPRING_DATASOURCE_USERNAME: admin_user
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_SQL_INT_MODE: always
+    networks:
+      - internal
+
+
+  performance-service:
+    build: ./performance-service
+    container_name: performance-service
+    depends_on:
+      - performance-db
+    environment:
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://performance-service-db:5432/db
+      SPRING_DATASOURCE_USERNAME: admin_user
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_SQL_INT_MODE: always
+    ports:
+      - "9001:9001"
+    networks:
+      - internal
+
+  security-service:
+    build: ./security-service
+    container_name: security-service
+    depends_on:
+      - security-db
+    environment:
+      JWT_SECRET: YjIyNTQzZDM4YjBlNTJkNzkzY2FiNGUxMDI0YjI3NzhhMWY4NDY5MzZkMmE4MWE2NDcyNzMxYjE3YjQ1MjZiNWNmNjIzMTNjYzQ1OWE3MzM2NzRlMDBlNjc0NmRiYzA5N2NiMzRmNTIxNWUzMjJmMGQ5MTZjMmI5MjRkZGFlMTRiMjM2MzU2OTlkYzA0ZDQ3YTUyMGVmYjg5MjMwM2EzNmM0ZTU5ODg5ZjU1ZGM3NDhkOTMwM2E4NDZiOTE5NWE0
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://security-service-db:5432/db
+      SPRING_DATASOURCE_USERNAME: admin_user
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_SQL_INIT_MODE: always
+    networks:
+      - internal
+
+  hr-analytics-service:
+    build: ./hr-analytics-service
+    container_name: hr-analytics-service
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    networks:
+      - internal
+
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "4004:4004"
+    environment:
+      AUTH_SERVICE_URL: http://security-service:4005
+    networks:
+      - internal
+
+
+volumes:
+    employee_db_data:
+    security_db_data:
+    performance_db_data:

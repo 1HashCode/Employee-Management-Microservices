@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "1bf96528-ca74-4655-9232-f1aee843a7c5",
+		"name": "Employee_Management_Service_API_Requests",
+		"description": "Employee Management System APIs, It contains the api services for admin login, employee CRUD management, performance review management,open API v3 docs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38205942"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user1@example.com\",\r\n    \"password\":\"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4004/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Gets the Jwt token for an already stored Admin with the email [testuser@test.com and ](https://mailto:testuser@test.com) password password123."
+					},
+					"response": []
+				}
+			],
+			"description": "For retrieving valid jwt token"
+		},
+		{
+			"name": "docs",
+			"item": [
+				{
+					"name": "security_docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4004/api-docs/security",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api-docs",
+								"security"
+							]
+						},
+						"description": "Gets the security service docs"
+					},
+					"response": []
+				},
+				{
+					"name": "performance_docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4004/api-docs/performance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api-docs",
+								"performance"
+							]
+						},
+						"description": "Gets the performance service docs"
+					},
+					"response": []
+				},
+				{
+					"name": "employee_docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4004/api-docs/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api-docs",
+								"employees"
+							]
+						},
+						"description": "Gets the employee service docs"
+					},
+					"response": []
+				}
+			],
+			"description": "Getting the open api v3 docs for the given services"
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "insert_employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmEkMTIkeHAzNm9NSGxwMEMyeXpsV2ZTLnJXT0YyUFpZbTRBcW92SlJKYVE5bXQwellEZHlXa1djdmkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM5MjM5OTMsImV4cCI6MTc0Mzk1OTk5M30.uJYNRSSi5CaK4xVLz60K4MsoEiz8DAarZWhbz6qV7yXrnGmYrCwWSuVVks2m6GbjqHVM7MU64DoEDveWE5puMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"User user\",\r\n        \"email\": \"user@gmail.com\",\r\n        \"department\": \"CSE\",\r\n        \"dateOfBirth\": \"2003-01-20\",\r\n        \"designation\": \"Software Developer\",\r\n        \"address\":\"yrtiuryituyer\",\r\n        \"registerDate\":\"2003-01-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4004/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"employees"
+							]
+						},
+						"description": "Creates an employee with a valid employee id, performance review account in performance service. Returns a JSON object with the employee fields. Requires a JSON body."
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_employees",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmEkMTIkeHAzNm9NSGxwMEMyeXpsV2ZTLnJXT0YyUFpZbTRBcW92SlJKYVE5bXQwellEZHlXa1djdmkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM5MjM5OTMsImV4cCI6MTc0Mzk1OTk5M30.uJYNRSSi5CaK4xVLz60K4MsoEiz8DAarZWhbz6qV7yXrnGmYrCwWSuVVks2m6GbjqHVM7MU64DoEDveWE5puMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4004/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"employees"
+							]
+						},
+						"description": "gets all the employees"
+					},
+					"response": []
+				},
+				{
+					"name": "update_employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmEkMTIkeHAzNm9NSGxwMEMyeXpsV2ZTLnJXT0YyUFpZbTRBcW92SlJKYVE5bXQwellEZHlXa1djdmkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM5MjM5OTMsImV4cCI6MTc0Mzk1OTk5M30.uJYNRSSi5CaK4xVLz60K4MsoEiz8DAarZWhbz6qV7yXrnGmYrCwWSuVVks2m6GbjqHVM7MU64DoEDveWE5puMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"UpdatedUser User\",\r\n    \"email\": \"User@gmail.com\",\r\n    \"address\": \"demo user\",\r\n    \"dateOfBirth\": \"2003-01-20\",\r\n    \"designation\":\"Software Developer\",\r\n    \"registerDate\":\"2003-01-20\",\r\n    \"department\":\"CSE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4004/api/employees/6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"employees",
+								"6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21"
+							]
+						},
+						"description": "requires a valid stored employee id in the url and a request JSON body."
+					},
+					"response": []
+				},
+				{
+					"name": "delete_employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmIkMTIkN2hvUlpmSnJSS0QybkltMnZITHM3T0JFVHkuTFdlblhYTUxLZjk5VzhNNFBVd082S0I3ZnUiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM4NTI2MzEsImV4cCI6MTc0Mzg4ODYzMX0.LWuRFNmDxNySPU86Dk-S649SvoN7OVqlFMYvcvrFJxlai9ZDlrHMLZ-tiBOTZkPvy-zTwiJq-i51OlF-WZnZkg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4004/api/employees/6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"employees",
+								"6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21"
+							]
+						},
+						"description": "deletes the employee with the given employee id in the url path"
+					},
+					"response": []
+				}
+			],
+			"description": "Contains the CRUD requests for the employee service. Every request requires a valid jwt token first which can be received from the login endpoint from Authentication folder.\n\nAdd Authorization header as Bearer {token}"
+		},
+		{
+			"name": "performanceReviews",
+			"item": [
+				{
+					"name": "get_all_performance_reviews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmEkMTIkeHAzNm9NSGxwMEMyeXpsV2ZTLnJXT0YyUFpZbTRBcW92SlJKYVE5bXQwellEZHlXa1djdmkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM5MjM5OTMsImV4cCI6MTc0Mzk1OTk5M30.uJYNRSSi5CaK4xVLz60K4MsoEiz8DAarZWhbz6qV7yXrnGmYrCwWSuVVks2m6GbjqHVM7MU64DoEDveWE5puMQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4004/api/performanceReviews?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"performanceReviews"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						},
+						"description": "gets all the performance reviews"
+					},
+					"response": []
+				},
+				{
+					"name": "update_performance_review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIkMmEkMTIkeHAzNm9NSGxwMEMyeXpsV2ZTLnJXT0YyUFpZbTRBcW92SlJKYVE5bXQwellEZHlXa1djdmkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDM5MjM5OTMsImV4cCI6MTc0Mzk1OTk5M30.uJYNRSSi5CaK4xVLz60K4MsoEiz8DAarZWhbz6qV7yXrnGmYrCwWSuVVks2m6GbjqHVM7MU64DoEDveWE5puMQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"evaluationStatus\": \"Completed\",\r\n        \"reviewPeriodStart\": \"2025-04-05\",\r\n        \"reviewPeriodEnd\": \"2025-10-05\",\r\n        \"rating\": \"5.0\",\r\n        \"comments\": \"\",\r\n        \"strengths\": \"s\",\r\n        \"areasForImprovement\": \"none\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4004/api/performanceReviews/6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"performanceReviews",
+								"6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21"
+							]
+						},
+						"description": "updates a performance review. The employee id should be passed to the url with a JSON body."
+					},
+					"response": []
+				},
+				{
+					"name": "get_performance_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4004/api/performanceReviews/6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"api",
+								"performanceReviews",
+								"6dcd76f4-ed9b-4bec-a9b4-64c6afc27f21"
+							]
+						},
+						"description": "gets the performance review of the given employee id passed through the url"
+					},
+					"response": []
+				}
+			],
+			"description": "Performance Review service with two requests. A performance review is created when an employee is created via grpc call.All requests requires a valid jwt token which can be retrieved from the login endpoint of Authentication folder.\n\nAdd Authorization header as Bearer {token}"
+		}
+	]
+}

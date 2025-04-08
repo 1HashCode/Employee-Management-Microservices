@@ -20,7 +20,7 @@ The system follows a microservices architecture with independently deployable se
 
 ### 🛡️ API Gateway
 <details>
-<summary>  CLICK TO EXPAND </summary>
+<summary>  Click to Know More </summary>
   
   <br>
   
@@ -34,7 +34,7 @@ The system follows a microservices architecture with independently deployable se
 
 ### 🔐 Security Service
 <details>
-<summary> CLICK TO EXPAND </summary>
+<summary> Click to Know More </summary>
   
   <br>
   
@@ -51,7 +51,7 @@ The system follows a microservices architecture with independently deployable se
 
 ### 👨‍💼 Employee Service
 <details>
-<summary>  CLICK TO EXPAND </summary>
+<summary>  Click to Know More </summary>
   
   <br>
   
@@ -70,7 +70,7 @@ The system follows a microservices architecture with independently deployable se
 
 ### 📊 Performance Service
 <details>
-<summary> CLICK TO EXPAND </summary>
+<summary> Click to Know More </summary>
   
   <br>
   
@@ -87,7 +87,7 @@ The system follows a microservices architecture with independently deployable se
 
 ### 📈 HR Analytics Service (Demo Service)
 <details>
-<summary>  CLICK TO EXPAND </summary>
+<summary>  Click to Know More </summary>
   
   <br>
   
@@ -103,7 +103,7 @@ The system follows a microservices architecture with independently deployable se
 <details>
   This system uses Dockerized databases and Kafka for seamless integration and scaling.
   
-<summary>  CLICK TO EXPAND </summary>
+<summary>  Click to Know More </summary>
   
   <br>
   
@@ -128,14 +128,14 @@ This project uses a robust set of tools and libraries that enable secure, scalab
 **Here's a breakdown of the core dependencies:**
 
 <details>
-<summary>  CLICK TO EXPAND </summary>
+<summary>  Click to Know More </summary>
   
   <br>
   
-- ☕ Backend Frameworks & Libraries
+- 🖥️ Backend Frameworks & Libraries
   - `Spring Boot` — Simplifies the bootstrapping and development of Spring-based applications with minimal configuration.
   - `Spring DevTools` — Enables hot reloading and automatic restarts for a faster development experience.
-  - `Spring Security` — Provides comprehensive security features including authentication, authorization, and protection against common vulnerabilities.
+  - `Spring Security` — Provides comprehensive security features, including authentication, authorization, and protection against common vulnerabilities.
   - `Spring Data JPA` — Simplifies database operations using Java Persistence API with minimal boilerplate code.
   - `Spring Cloud Gateway` — A lightweight API Gateway built on Spring Boot for routing, filtering, and securing requests across services.
   - `Spring Web` — Supports RESTful API development using Spring MVC.
@@ -177,18 +177,22 @@ This project uses a robust set of tools and libraries that enable secure, scalab
 ## 📬 API Documentation Snapshot
 This image showcases the OpenAPI (Swagger) documentation for the Employee Management System.
 It provides a visual overview of the available REST endpoints, request/response structures, and service contracts for each microservice.
-The documentation was generated automatically and helps developers and testers interact with the APIs efficiently during development and debugging.
+The documentation is generated automatically and helps developers and testers interact with the APIs efficiently during development and debugging.
 
-### Auth Controller
+### Auth Requests
 ![auth-requests](images/auth-controller-requests.png)
 
-### Employee Controller
+### Employee Requests
 ![employee-requests](images/employee-controller-requests.PNG)
 
-### Performance Controller
+### Performance Requests
 ![performance-requests](images/performance-controller-requests.PNG)
 
 ---
+
+## 📬 API Request Collection with Postman
+A complete and well-structured Postman collection (`Employee_Management_Service_API_Requests.postman_collection.json file`) is included in the project. It contains all the necessary API requests categorized by service, making it easy for developers or testers to interact with the system's endpoints quickly.
+Simply import the collection into Postman and start testing the microservices seamlessly.
 
 ## 🐳 Docker Compose Integration
 `Docker Compose` is used to streamline the orchestration of all microservices, supporting containers, and environments required for this project. It allows us to define and manage multiple containers in a single `YAML` file, ensuring all services start in the correct order with appropriate configurations and ports.
@@ -218,7 +222,7 @@ To stop all running containers:
 
 ---
 
-## 🛠️Steps to Run Your Project from GitHub
+## 🛠️Steps to Run the Project From GitHub
 
 1. Clone the Repository
 <pre> git clone https://github.com/your-username/your-repo.git

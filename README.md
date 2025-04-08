@@ -194,6 +194,8 @@ The documentation is generated automatically and helps developers and testers in
 A complete and well-structured Postman collection (`Employee_Management_Service_API_Requests.postman_collection.json file`) is included in the project. It contains all the necessary API requests categorized by service, making it easy for developers or testers to interact with the system's endpoints quickly.
 Simply import the collection into Postman and start testing the microservices seamlessly.
 
+---
+
 ## 🐳 Docker Compose Integration
 `Docker Compose` is used to streamline the orchestration of all microservices, supporting containers, and environments required for this project. It allows us to define and manage multiple containers in a single `YAML` file, ensuring all services start in the correct order with appropriate configurations and ports.
 

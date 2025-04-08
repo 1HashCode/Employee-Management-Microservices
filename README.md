@@ -1,4 +1,4 @@
-# 🏢 Employee Management System Microservices
+# 🏬 Employee Management System Microservices
 ---
 
 #### 🗂️ A scalable and modular Employee Management System built using microservices architecture. 
@@ -114,7 +114,7 @@ The system follows a microservices architecture with independently deployable se
   - `performance-service-DB` – Stores performance-related data for employees.
 
 #### 🔁 Kafka Infrastructure
-- Kafka Broker runs inside a container for handling real-time messaging.
+- Kafka Broker runs inside a container to handle real-time messaging.
 - Maintains a topic named `employee-topic` which:
   - Receives events from `employee-service` on employee creation.
   - Is consumed by services like `hr-analytics-service` for analytics and further processing.
@@ -124,7 +124,7 @@ The system follows a microservices architecture with independently deployable se
 ---
 
 ## 🧩 Project Dependencies
-This project uses a powerful set of tools and libraries that enable secure, scalable, and maintainable development using the microservices architecture.   
+This project uses a robust set of tools and libraries that enable secure, scalable, and maintainable development using the microservices architecture.   
 **Here's a breakdown of the core dependencies:**
 
 <details>
@@ -149,7 +149,7 @@ This project uses a powerful set of tools and libraries that enable secure, scal
   - `gRPC` — A high-performance, open-source universal RPC framework for inter-service communication.
 
 - 📡 Event Streaming
-  - Kafka — Used for distributed event streaming; enables asynchronous communication between microservices using topics.
+  - `Kafka` — Used for distributed event streaming; enables asynchronous communication between microservices using topics.
 
 - 🐳 Containerization
   - `Docker` — Containerizes each service for consistent environments across development and production.
@@ -206,7 +206,7 @@ The documentation was generated automatically and helps developers and testers i
 - Kafka Broker with employee-topic
 
 ▶️ Running the Entire Project:
-To build and start all services, simply run:
+To build and start all services, run:
 <pre>docker-compose up --build</pre>
 This command:
 - Builds all the images defined in the docker-compose.yml
@@ -224,18 +224,17 @@ To stop all running containers:
 <pre> git clone https://github.com/your-username/your-repo.git
 cd your-repo </pre>
 
-2. Generate gRPC Files
-<pre>mvn clean compile</pre>
-
-3. Make Sure Docker and Docker Compose Are Installed
+2. Make Sure Docker and Docker Compose Are Installed
 <pre>docker --version
 docker-compose --version</pre>
+
+3. Turn on the docker engine
 
 4. Run the Whole Project with Docker Compose
 <pre>docker-compose up --build
 </pre>
 
-5. Import the collection of postman requests from the project 
+5. Import the project's Postman collection into Postman to access ready-made requests.
 
 6. Stop the Project (when done)
 <pre>docker-compose down
